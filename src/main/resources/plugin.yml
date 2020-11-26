@@ -1,0 +1,9 @@
+name: CustomTablistLib
+version: ${project.version}
+main: dev.crystall.customtablistlib.CustomTablistLib
+api-version: 1.16
+prefix: "[ CTL ]"
+load: STARTUP
+authors: [ CrystallDEV ]
+description: Library to display custom tablist informations
+website: www.crystall.dev
