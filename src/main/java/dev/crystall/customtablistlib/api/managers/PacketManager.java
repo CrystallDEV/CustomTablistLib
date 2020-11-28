@@ -12,11 +12,6 @@ import dev.crystall.customtablistlib.nms.wrappers.WrapperPlayServerPlayerInfo;
 import dev.crystall.customtablistlib.nms.wrappers.WrapperPlayServerPlayerListHeaderFooter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
-import net.minecraft.server.v1_16_R3.BiomeManager;
-import net.minecraft.server.v1_16_R3.EntityPlayer;
-import net.minecraft.server.v1_16_R3.PacketPlayOutLogin;
-import net.minecraft.server.v1_16_R3.WorldServer;
-import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -43,10 +38,10 @@ public class PacketManager {
     sendPacket(player, infoWrapper.getHandle(), false);
   }
 
-  public static void sendHeaderFooter(Player player) {
+  public static void sendHeaderFooter(Player player, WrappedChatComponent header, WrappedChatComponent footer) {
     WrapperPlayServerPlayerListHeaderFooter headerFooterPacket = new WrapperPlayServerPlayerListHeaderFooter();
-    headerFooterPacket.setHeader(WrappedChatComponent.fromText("Age of Battle"));
-    headerFooterPacket.setFooter(WrappedChatComponent.fromText("This is a footer"));
+    headerFooterPacket.setHeader(header);
+    headerFooterPacket.setFooter(footer);
     sendPacket(player, headerFooterPacket.getHandle(), false);
   }
 

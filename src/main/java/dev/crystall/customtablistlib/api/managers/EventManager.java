@@ -1,7 +1,6 @@
 package dev.crystall.customtablistlib.api.managers;
 
 import dev.crystall.customtablistlib.TablistLibrary;
-import dev.crystall.customtablistlib.api.data.TablistEntry;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,8 +19,7 @@ public class EventManager implements Listener {
   @EventHandler
   public void onJoin(PlayerJoinEvent event) {
     TablistLibrary.getTablistManager().addPlayer(event.getPlayer());
-    TablistLibrary.getTablistManager().setEntry(event.getPlayer(), new TablistEntry(5, "Hallo"), true);
-    TablistLibrary.getTablistManager().updateTablist(event.getPlayer());
+    TablistLibrary.getTablistManager().updatePlayerTablist(event.getPlayer());
   }
 
   @EventHandler
