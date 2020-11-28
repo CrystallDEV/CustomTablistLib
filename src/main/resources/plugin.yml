@@ -1,6 +1,6 @@
 name: CustomTablistLib
 version: ${project.version}
-main: dev.crystall.customtablistlib.CustomTablistLib
+main: dev.crystall.TablistTester
 api-version: 1.16
 prefix: "[ CTL ]"
 load: STARTUP
