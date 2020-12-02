@@ -14,14 +14,20 @@ import lombok.Getter;
 public class TablistEntry {
 
   private final int index;
-  private final String key;
+  private final String internalKey;
+  private final String referenceKey;
   private final String content;
   private PlayerSkin playerSkin;
 
   public TablistEntry(int index, String content) {
+    this(index, "\uE83ATBL-" + (index >= 10 ? index : "0" + index), content);
+  }
+
+  public TablistEntry(int index, String referenceKey, String content) {
     this.index = index;
     this.content = content;
-    this.key = "\uE83ATBL-" + (index >= 10 ? index : "0" + index);
+    this.internalKey = "\uE83ATBL-" + (index >= 10 ? index : "0" + index);
+    this.referenceKey = referenceKey;
     setSkin(1);
   }
 
@@ -34,7 +40,7 @@ public class TablistEntry {
   }
 
   public WrappedGameProfile getGameProfile() {
-    WrappedGameProfile wrappedGameProfile = new WrappedGameProfile(UUID.randomUUID(), key);
+    WrappedGameProfile wrappedGameProfile = new WrappedGameProfile(UUID.randomUUID(), internalKey);
     if (playerSkin != null) {
       wrappedGameProfile.getProperties().get("textures").clear();
       wrappedGameProfile.getProperties().put("textures", new WrappedSignedProperty("textures", playerSkin.getValue(), playerSkin.getSignature()));

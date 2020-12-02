@@ -62,6 +62,15 @@ public class PlayerTablist {
     }
   }
 
+  public TablistEntry getEntryByReferenceKey(String referenceKey) {
+    for (TablistEntry entry : tablistEntries) {
+      if (entry.getReferenceKey().contentEquals(referenceKey)) {
+        return entry;
+      }
+    }
+    return null;
+  }
+
   public void updateTablist() {
     for (TablistEntry entry : tablistEntries) {
       PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.REMOVE_PLAYER);
