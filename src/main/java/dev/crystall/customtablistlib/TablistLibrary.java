@@ -20,18 +20,15 @@ public class TablistLibrary {
    * Manages all events happening in this library
    */
   @Getter
-  private static EventManager eventManager;
+  private static final EventManager eventManager = new EventManager();
 
   /**
-   * Manages everything that has to do with the
+   * Manages everything that has to do with the tablist objects
    */
   @Getter
-  private static TablistManager tablistManager;
+  private static final TablistManager tablistManager = new TablistManager();
 
-  public TablistLibrary(JavaPlugin plugin) {
+  public static void init(JavaPlugin plugin) {
     TablistLibrary.plugin = plugin;
-    TablistLibrary.tablistManager = new TablistManager();
-    TablistLibrary.eventManager = new EventManager();
   }
-
 }
