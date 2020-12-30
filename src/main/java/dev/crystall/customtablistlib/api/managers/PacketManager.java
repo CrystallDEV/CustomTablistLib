@@ -32,7 +32,7 @@ public class PacketManager {
    */
   public static void sendPlayerInfoPacket(Player player, TablistEntry entry, PlayerInfoAction action) {
     WrapperPlayServerPlayerInfo infoWrapper = new WrapperPlayServerPlayerInfo();
-    PlayerInfoData data = new PlayerInfoData(entry.getGameProfile(), 1, NativeGameMode.NOT_SET, WrappedChatComponent.fromText(entry.getContent()));
+    PlayerInfoData data = new PlayerInfoData(entry.getGameProfile(), 9999, NativeGameMode.NOT_SET, WrappedChatComponent.fromText(entry.getContent()));
     infoWrapper.setData(Collections.singletonList(data));
     infoWrapper.setAction(action);
     sendPacket(player, infoWrapper.getHandle(), false);

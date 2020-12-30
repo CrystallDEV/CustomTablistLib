@@ -14,7 +14,6 @@ public class TablistManager implements Listener {
 
   private static final Map<UUID, PlayerTablist> tablistEntryMap = new HashMap<>();
 
-
   public void addPlayer(Player player) {
     if (!tablistEntryMap.containsKey(player.getUniqueId())) {
       tablistEntryMap.put(player.getUniqueId(), new PlayerTablist(player));
@@ -30,6 +29,14 @@ public class TablistManager implements Listener {
     if (playerTablist != null) {
       playerTablist.updateTablist();
     }
+  }
+
+  public PlayerTablist getPlayerTablist(Player player) {
+    return getPlayerTablist(player.getUniqueId());
+  }
+
+  public PlayerTablist getPlayerTablist(UUID uuid) {
+    return tablistEntryMap.get(uuid);
   }
 
   // TODO add option to add variable and check for it and replace it in an entry

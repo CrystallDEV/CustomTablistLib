@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
  */
 public class EventManager implements Listener {
 
-
   public EventManager() {
     TablistLibrary.getPlugin().getServer().getPluginManager().registerEvents(this, TablistLibrary.getPlugin());
   }

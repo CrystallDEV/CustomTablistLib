@@ -36,10 +36,14 @@ public class PlayerTablist {
    * @param update
    */
   public void setEntry(TablistEntry entry, boolean update) {
-    tablistEntries.set(entry.getIndex(), entry);
     if (update) {
-      updateTablist();
+      TablistEntry existingEntry = tablistEntries.get(entry.getIndex());
+      if (existingEntry != null) {
+        PacketManager.sendPlayerInfoPacket(player, existingEntry, PlayerInfoAction.REMOVE_PLAYER);
+      }
+      PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.ADD_PLAYER);
     }
+    tablistEntries.set(entry.getIndex(), entry);
   }
 
   /**
@@ -71,10 +75,16 @@ public class PlayerTablist {
     return null;
   }
 
+  public void initTablist() {
+    for (TablistEntry entry : tablistEntries) {
+      PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.ADD_PLAYER);
+    }
+    PacketManager.sendHeaderFooter(player, header, footer);
+  }
+
   public void updateTablist() {
     for (TablistEntry entry : tablistEntries) {
-      PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.REMOVE_PLAYER);
-      PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.ADD_PLAYER);
+      PacketManager.sendPlayerInfoPacket(player, entry, PlayerInfoAction.UPDATE_DISPLAY_NAME);
     }
     PacketManager.sendHeaderFooter(player, header, footer);
   }
