@@ -19,13 +19,14 @@
 package dev.crystall.customtablistlib.nms.wrappers;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.PacketType.Play.Server;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.EnumWrappers.PlayerInfoAction;
 import com.comphenix.protocol.wrappers.PlayerInfoData;
 import java.util.List;
 
 public class WrapperPlayServerPlayerInfo extends AbstractPacket {
-	public static final PacketType TYPE = PacketType.Play.Server.PLAYER_INFO;
+	public static final PacketType TYPE = Server.PLAYER_INFO;
 
 	public WrapperPlayServerPlayerInfo() {
 		super(new PacketContainer(TYPE), TYPE);
