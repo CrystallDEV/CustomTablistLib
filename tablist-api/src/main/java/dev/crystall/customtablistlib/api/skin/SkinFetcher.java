@@ -2,7 +2,6 @@ package dev.crystall.customtablistlib.api.skin;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import dev.crystall.customtablistlib.TablistLibrary;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -19,16 +18,7 @@ public class SkinFetcher {
   private static final String MINESKIN_API = "https://api.mineskin.org/get/id/";
   private static final Map<Integer, PlayerSkin> cachedSkins = new ConcurrentHashMap<>();
 
-  // TODO maybe replace with the mineskin API java client -> https://github.com/InventivetalentDev/MineskinClient
-  public static void asyncFetchSkin(int id, Callback<PlayerSkin> callback) {
-    Bukkit.getScheduler().runTaskAsynchronously(TablistLibrary.getPlugin(), () -> {
-      PlayerSkin skin = fetchSkin(id);
-      if (skin == null) {
-        callback.failed();
-        return;
-      }
-      callback.call(skin);
-    });
+  private SkinFetcher() {
   }
 
   public static PlayerSkin fetchSkin(int id) {
@@ -53,7 +43,7 @@ public class SkinFetcher {
       scanner.close();
       httpURLConnection.disconnect();
 
-      JsonObject jsonObject = (JsonObject) new JsonParser().parse(builder.toString());
+      JsonObject jsonObject = (JsonObject) JsonParser.parseString(builder.toString());
       JsonObject textures = jsonObject.get("data").getAsJsonObject().get("texture").getAsJsonObject();
       String value = textures.get("value").getAsString();
       String signature = textures.get("signature").getAsString();

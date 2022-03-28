@@ -19,9 +19,9 @@ import org.bukkit.entity.Player;
  */
 public class PacketManager {
 
-  public PacketManager() {
-
+  private PacketManager() {
   }
+
 
   /**
    * Sends packets to either add or remove the given entry from the tablist

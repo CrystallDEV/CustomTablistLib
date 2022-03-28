@@ -274,4 +274,5 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	public void setPackOptionData(int value) {
 		handle.getIntegers().write(1, value);
 	}
+
 }

@@ -47,9 +47,13 @@ public class TablistEntry {
     WrappedGameProfile wrappedGameProfile = new WrappedGameProfile(uuid, internalKey);
     if (playerSkin != null) {
       wrappedGameProfile.getProperties().get("textures").clear();
-      wrappedGameProfile.getProperties().put("textures", new WrappedSignedProperty("textures", playerSkin.getValue(), playerSkin.getSignature()));
+      wrappedGameProfile.getProperties().put("textures", new WrappedSignedProperty("textures", playerSkin.value(), playerSkin.signature()));
     }
     return wrappedGameProfile;
+  }
+
+  public int getIndex() {
+    return index;
   }
 
 }

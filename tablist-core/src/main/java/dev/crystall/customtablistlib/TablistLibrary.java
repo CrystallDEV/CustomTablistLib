@@ -1,7 +1,7 @@
 package dev.crystall.customtablistlib;
 
 import dev.crystall.customtablistlib.api.managers.EventManager;
-import dev.crystall.customtablistlib.api.managers.TablistManager;
+import dev.crystall.customtablistlib.api.managers.TablistManagerImpl;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,14 +28,14 @@ public class TablistLibrary {
    * Manages everything that has to do with the tablist objects
    */
   @Getter
-  private static TablistManager tablistManager;
+  private static TablistManagerImpl tablistManager;
 
   private TablistLibrary() {
   }
 
   public static void init(JavaPlugin plugin) {
     TablistLibrary.setPlugin(plugin);
-    tablistManager = new TablistManager();
+    tablistManager = new TablistManagerImpl();
     eventManager = new EventManager();
   }
 }

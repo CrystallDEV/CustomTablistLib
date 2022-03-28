@@ -2,7 +2,7 @@ package dev.crystall.customtablistlib.api.data;
 
 import com.comphenix.protocol.wrappers.EnumWrappers.PlayerInfoAction;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
-import dev.crystall.customtablistlib.api.managers.PacketManager;
+import dev.crystall.customtablistlib.api.manager.PacketManager;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 @Getter
 public class PlayerTablist {
 
-  private final static int MAX_PLAYER_COUNT = 80;
+  private static final int MAX_PLAYER_COUNT = 80;
 
   private final Player player;
   private final List<TablistEntry> tablistEntries;

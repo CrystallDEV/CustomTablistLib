@@ -7,13 +7,20 @@
   <groupId>dev.crystall</groupId>
   <artifactId>customtablistlib</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <modules>
+    <module>tablist-api</module>
+    <module>tablist-core</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>CustomTablistLib</name>
 
   <description>Library to display custom tablist informations</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <paper.version>1.18.2-R0.1-SNAPSHOT</paper.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <url>www.crystall.dev</url>
@@ -23,7 +30,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>3.2.0</version>
         <configuration>
           <outputDirectory>${dir}</outputDirectory>
         </configuration>
@@ -53,13 +60,22 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0-M3</version>
+        <configuration>
+          <rules>
+            <requireMavenVersion>
+              <version>3.8.4</version>
+            </requireMavenVersion>
+            <requireJavaVersion>
+              <version>17</version>
+            </requireJavaVersion>
+          </rules>
+        </configuration>
+      </plugin>
     </plugins>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
   </build>
 
   <repositories>
@@ -79,22 +95,23 @@
   </repositories>
 
   <dependencies>
+    <!--Paper API-->
     <dependency>
-      <groupId>com.destroystokyo.paper</groupId>
-      <artifactId>paper</artifactId>
-      <version>1.16.4-R0.1-SNAPSHOT</version>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>${paper.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.12</version>
+      <version>1.18.22</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.comphenix.protocol</groupId>
       <artifactId>ProtocolLib</artifactId>
-      <version>4.6.0-SNAPSHOT</version>
+      <version>4.7.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
