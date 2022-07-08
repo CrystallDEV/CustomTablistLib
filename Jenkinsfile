@@ -34,7 +34,7 @@ pipeline {
         }
         stage('SonarQube') {
             when {
-                branch "master"
+                branch "main"
             }
             stages {
                 stage('Analysis') {
@@ -58,7 +58,7 @@ pipeline {
         stage('Deploy to snapshot') {
             when {
                 not {
-                    branch 'master'
+                    branch 'main'
                 }
             }
             steps {
@@ -71,7 +71,7 @@ pipeline {
         }
         stage('Deploy to release') {
             when {
-                branch "master"
+                branch "main"
             }
             steps {
                 withMaven(maven: 'maven-3') {
