@@ -25,6 +25,17 @@
   </properties>
   <url>www.crystall.dev</url>
 
+  <distributionManagement>
+    <snapshotRepository>
+      <id>crystall-nexus</id>
+      <url>https://nexus.crystall.dev/repository/paper-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>crystall-nexus</id>
+      <url>https://nexus.crystall.dev/repository/paper-plugins/</url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <plugins>
       <plugin>
